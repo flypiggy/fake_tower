@@ -27,7 +27,7 @@ ActiveRecord::Schema.define(version: 20160829175620) do
 
   create_table "teams", force: :cascade do |t|
     t.string   "name"
-    t.integer  "owner_id",   null: false
+    t.integer  "owner_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_teams_on_owner_id", using: :btree
