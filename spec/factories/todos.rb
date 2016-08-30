@@ -4,6 +4,6 @@ FactoryGirl.define do
     describe 'Test tasks'
     project
     user
-    due_date { 1.days.since }
+    due_date { 1.day.since }
   end
 end

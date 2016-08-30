@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160830074545) do
+ActiveRecord::Schema.define(version: 20160830164821) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,24 @@ ActiveRecord::Schema.define(version: 20160830074545) do
     t.datetime "updated_at", null: false
     t.index ["todo_id"], name: "index_comments_on_todo_id", using: :btree
     t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer  "team_id",    null: false
+    t.integer  "project_id"
+    t.integer  "user_id",    null: false
+    t.integer  "target_id",  null: false
+    t.integer  "comment_id"
+    t.string   "action"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action"], name: "index_events_on_action", using: :btree
+    t.index ["comment_id"], name: "index_events_on_comment_id", using: :btree
+    t.index ["project_id"], name: "index_events_on_project_id", using: :btree
+    t.index ["target_id"], name: "index_events_on_target_id", using: :btree
+    t.index ["team_id"], name: "index_events_on_team_id", using: :btree
+    t.index ["user_id"], name: "index_events_on_user_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|

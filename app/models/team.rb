@@ -1,6 +1,7 @@
 class Team < ApplicationRecord
   has_many :accesses
   has_many :users, through: :accesses
+  has_many :events
   belongs_to :owner, class_name: 'User'
 
   after_create :grant_owner_access
