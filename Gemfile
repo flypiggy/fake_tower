@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'paranoia', '2.2.0.pre'
+
 group :development, :test do
   gem 'pry-rails'
 
