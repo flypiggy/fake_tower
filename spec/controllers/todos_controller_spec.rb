@@ -4,7 +4,7 @@ RSpec.describe TodosController, type: :controller do
   let!(:user) { create(:user) }
   let(:project) { create(:project) }
 
-  context 'POST #create' do
+  describe 'POST #create' do
     let(:todo) { build(:todo) }
 
     it 'should create todo' do
@@ -18,7 +18,7 @@ RSpec.describe TodosController, type: :controller do
     end
   end
 
-  context 'PATCH #update' do
+  describe 'PATCH #update' do
     let(:todo) { create(:todo, due_date: nil) }
 
     it 'should create event when due_date changed' do
@@ -39,7 +39,7 @@ RSpec.describe TodosController, type: :controller do
     end
   end
 
-  context 'DELETE #destroy' do
+  describe 'DELETE #destroy' do
     let(:todo) { create(:todo) }
 
     it 'should create event when deleted' do
@@ -48,7 +48,7 @@ RSpec.describe TodosController, type: :controller do
     end
   end
 
-  context 'POST #complate' do
+  describe 'POST #complate' do
     let(:todo) { create(:todo) }
 
     it 'should create event when deleted' do

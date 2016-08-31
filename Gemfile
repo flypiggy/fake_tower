@@ -30,7 +30,10 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Soft delete
 gem 'paranoia', '2.2.0.pre'
+# Paginate
+gem 'kaminari'
 
 group :development, :test do
   gem 'pry-rails'
