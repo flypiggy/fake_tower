@@ -8,13 +8,17 @@ class TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    record_events if @todo.update(todo_params)
+    record_update_events if @todo.update(todo_params)
   end
 
   def destroy
+    todo = Todo.find(params[:id])
+    todo.create_event(current_user, '删除了任务') if todo.destroy
   end
 
   def complete
+    todo = Todo.find(params[:id])
+    todo.finished! && todo.create_event(current_user, '完成了任务')
   end
 
   private
@@ -23,7 +27,7 @@ class TodosController < ApplicationController
     params.require(:todo).permit(:name, :describe, :assigned_user_id, :due_date)
   end
 
-  def record_events
+  def record_update_events
     generate_actions.each { |action| @todo.create_event(current_user, action) }
   end
 

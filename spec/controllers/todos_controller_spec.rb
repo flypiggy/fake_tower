@@ -38,4 +38,22 @@ RSpec.describe TodosController, type: :controller do
       expect(TodoEvent.count).to eq(2)
     end
   end
+
+  context 'DELETE #destroy' do
+    let(:todo) { create(:todo) }
+
+    it 'should create event when deleted' do
+      delete :destroy, params: { project_id: project.id, id: todo.id }
+      expect(TodoEvent.first.action).to eq('删除了任务')
+    end
+  end
+
+  context 'POST #complate' do
+    let(:todo) { create(:todo) }
+
+    it 'should create event when deleted' do
+      post :complete, params: { project_id: project.id, id: todo.id }
+      expect(TodoEvent.first.action).to eq('完成了任务')
+    end
+  end
 end
