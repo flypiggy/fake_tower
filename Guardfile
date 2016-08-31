@@ -69,5 +69,5 @@ guard :rspec, cmd: "bundle exec rspec" do
   end
 
   # Event specs
-  watch(%r{^app/models/event/.+\.rb$})  { rspec.spec.call("models/event") }
+  watch(%r{^app/models/event/.+\.rb$}) { rspec.spec.call("models/event") }
 end
