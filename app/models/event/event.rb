@@ -5,6 +5,10 @@ class Event < ApplicationRecord
 
   before_create :set_project_and_team
 
+  def self.by_project(project)
+    project.present? ? where(project: project) : all
+  end
+
   private
 
   def set_project_and_team

@@ -1,0 +1,17 @@
+<h1>Events#index</h1>
+<% cache @project do %>
+  <ul>
+    <%- @events.each do |event| %>
+      <li>
+        <%= event.created_at.strftime("%H:%M") %> |
+        <%= link_to event.user.username, user_path(event.user) %>
+        <%= event.action %>
+        <%= link_to event.target.name, todo_path(event.target) %>
+        <br>
+        <% if event.instance_of? CommentEvent %>
+          <%= event.content %>
+        <% end %>
+      </li>
+    <%- end %>
+  </ul>
+<% end %>
